@@ -266,7 +266,8 @@ MockFs.prototype.move = function (source, target) {
         var targetDirectory = self.directory(target);
         var targetDirectoryNode = self._root._walk(targetDirectory)._follow(targetDirectory);
         var targetName = self.base(target);
-        if (targetDirectoryNode._entries[targetName] && targetDirectoryNode._entires[targetName].isDirectory()) {
+        //TODO figure out if this is correct, the real implementation uses rename which probably doesn't do this
+        if (targetDirectoryNode._entries[targetName] && targetDirectoryNode._entries[targetName].isDirectory()) {
             // move the node into the directory
             targetDirectoryNode = targetDirectoryNode._entries[targetName]._follow(target);
         }
